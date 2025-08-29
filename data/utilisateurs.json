@@ -1,0 +1,18 @@
+{
+  "utilisateur_valide": {
+    "username": "admin",
+    "password": "tano82"
+  },
+  "mot_de_passe_invalide": {
+    "username": "admin",
+    "password": "invalidPassword"
+  },
+  "nom_utilisateur_invalide": {
+    "username": "invalidUsername",
+    "password": "admin02@@"
+  },
+  "nom_utilisateur_et_mot_de_passe_invalide": {
+    "username": "invalidUsername",
+    "password": "invalidPassword"
+  }
+}

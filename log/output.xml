@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.5 on win32)" generated="2025-08-29T09:44:47.550871" rpa="false" schemaversion="5">
+<suite id="s1" name="Connexion" source="C:\Users\afiac\PycharmProjects\ProjetSIGE\tests\connexion.robot">
+<test id="s1-t1" name="Connexion valider" line="14">
+<kw name="Ouvrir L'application" owner="keywoard" type="SETUP">
+<msg time="2025-08-29T09:44:47.837700" level="FAIL">Variable '${BASE_URL}' not found.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>${TIMEOUT}</arg>
+<status status="FAIL" start="2025-08-29T09:44:47.837245" elapsed="0.000548">Variable '${BASE_URL}' not found.</status>
+</kw>
+<kw name="Fermer Navigateur" owner="keywoard" type="TEARDOWN">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-08-29T09:44:47.838648" elapsed="0.000235"/>
+</kw>
+<arg>Close Browser</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-08-29T09:44:47.838474" elapsed="0.000488"/>
+</kw>
+<status status="PASS" start="2025-08-29T09:44:47.837994" elapsed="0.001024"/>
+</kw>
+<tag>demo_valide</tag>
+<status status="FAIL" start="2025-08-29T09:44:47.836655" elapsed="0.002403">Setup failed:
+Variable '${BASE_URL}' not found.</status>
+</test>
+<test id="s1-t2" name="Nom Utilisateur Invalide" line="21">
+<kw name="Ouvrir L'application" owner="keywoard" type="SETUP">
+<msg time="2025-08-29T09:44:47.839782" level="FAIL">Variable '${BASE_URL}' not found.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>${TIMEOUT}</arg>
+<status status="FAIL" start="2025-08-29T09:44:47.839462" elapsed="0.000372">Variable '${BASE_URL}' not found.</status>
+</kw>
+<kw name="Fermer Navigateur" owner="keywoard" type="TEARDOWN">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-08-29T09:44:47.840249" elapsed="0.000080"/>
+</kw>
+<arg>Close Browser</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-08-29T09:44:47.840137" elapsed="0.000235"/>
+</kw>
+<status status="PASS" start="2025-08-29T09:44:47.839965" elapsed="0.000456"/>
+</kw>
+<tag>username_invalide</tag>
+<status status="FAIL" start="2025-08-29T09:44:47.839230" elapsed="0.001226">Setup failed:
+Variable '${BASE_URL}' not found.</status>
+</test>
+<test id="s1-t3" name="Mot de passe Invalide" line="32">
+<kw name="Ouvrir L'application" owner="keywoard" type="SETUP">
+<msg time="2025-08-29T09:44:47.841160" level="FAIL">Variable '${BASE_URL}' not found.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>${TIMEOUT}</arg>
+<status status="FAIL" start="2025-08-29T09:44:47.840851" elapsed="0.000354">Variable '${BASE_URL}' not found.</status>
+</kw>
+<kw name="Fermer Navigateur" owner="keywoard" type="TEARDOWN">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-08-29T09:44:47.841591" elapsed="0.000073"/>
+</kw>
+<arg>Close Browser</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-08-29T09:44:47.841483" elapsed="0.000225"/>
+</kw>
+<status status="PASS" start="2025-08-29T09:44:47.841320" elapsed="0.000431"/>
+</kw>
+<tag>password_invalide</tag>
+<status status="FAIL" start="2025-08-29T09:44:47.840623" elapsed="0.001159">Setup failed:
+Variable '${BASE_URL}' not found.</status>
+</test>
+<test id="s1-t4" name="Nom utilisateur et Mot de passe Invalident" line="41">
+<kw name="Ouvrir L'application" owner="keywoard" type="SETUP">
+<msg time="2025-08-29T09:44:47.842460" level="FAIL">Variable '${BASE_URL}' not found.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>${TIMEOUT}</arg>
+<status status="FAIL" start="2025-08-29T09:44:47.842137" elapsed="0.000373">Variable '${BASE_URL}' not found.</status>
+</kw>
+<kw name="Fermer Navigateur" owner="keywoard" type="TEARDOWN">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-08-29T09:44:47.842931" elapsed="0.000072"/>
+</kw>
+<arg>Close Browser</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-08-29T09:44:47.842828" elapsed="0.000218"/>
+</kw>
+<status status="PASS" start="2025-08-29T09:44:47.842653" elapsed="0.000435"/>
+</kw>
+<tag>password_invalide</tag>
+<status status="FAIL" start="2025-08-29T09:44:47.841907" elapsed="0.001212">Setup failed:
+Variable '${BASE_URL}' not found.</status>
+</test>
+<doc>Suite de tests pour valider le cas passant et les cas non passant de la connexion</doc>
+<status status="FAIL" start="2025-08-29T09:44:47.561742" elapsed="0.281621"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="4" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">demo_valide</stat>
+<stat pass="0" fail="2" skip="0">password_invalide</stat>
+<stat pass="0" fail="1" skip="0">username_invalide</stat>
+</tag>
+<suite>
+<stat name="Connexion" id="s1" pass="0" fail="4" skip="0">Connexion</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-08-29T09:44:47.586885" level="WARN">Error in file 'C:\Users\afiac\PycharmProjects\ProjetSIGE\pages\loginPage.robot' on line 52: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-08-29T09:44:47.587260" level="WARN">Error in file 'C:\Users\afiac\PycharmProjects\ProjetSIGE\pages\loginPage.robot' on line 61: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-08-29T09:44:47.786466" level="WARN">Error in file 'C:\Users\afiac\PycharmProjects\ProjetSIGE\ressources\keywords\keywoard.robot' on line 22: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-08-29T09:44:47.835196" level="ERROR">Error in file 'C:\Users\afiac\PycharmProjects\ProjetSIGE\tests\connexion.robot' on line 5: Replacing variables from setting 'Resource' failed: Variable '${ENV}' not found.</msg>
+</errors>
+</robot>
