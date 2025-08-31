@@ -9,7 +9,14 @@ Library    DateTime
 *** Keywords ***
 Ouvrir L'application
     [Arguments]    ${url}    ${browser}    ${timeout}
-    Open Browser    ${url}    ${browser}
+    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Run Keyword If    '${browser}' == 'chrome'    Call Method    ${options}    add_argument    --headless
+    Run Keyword If    '${browser}' == 'chrome'    Call Method    ${options}    add_argument    --no-sandbox
+    Run Keyword If    '${browser}' == 'chrome'    Call Method    ${options}    add_argument    --disable-dev-shm-usage
+    Run Keyword If    '${browser}' == 'chrome'    Call Method    ${options}    add_argument    --disable-gpu
+    Run Keyword If    '${browser}' == 'chrome'    Call Method    ${options}    add_argument    --window-size=1920,1080
+    Run Keyword If    '${browser}' == 'chrome'    Create WebDriver    Chrome    options=${options}
+    Run Keyword If    '${browser}' != 'chrome'    Open Browser    ${url}    ${browser}
     Maximize Browser Window
     Set Selenium Timeout    ${timeout}
 
