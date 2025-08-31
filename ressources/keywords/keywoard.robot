@@ -9,24 +9,22 @@ Library    DateTime
 *** Keywords ***
 *** Keywords ***
 *** Keywords ***
+*** Keywords ***
+*** Keywords ***
 Ouvrir L'application
     [Arguments]    ${url}    ${browser}    ${timeout}
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    # Mode headless
     Call Method    ${options}    add_argument    --headless=new
     Call Method    ${options}    add_argument    --no-sandbox
     Call Method    ${options}    add_argument    --disable-dev-shm-usage
     Call Method    ${options}    add_argument    --disable-gpu
     Call Method    ${options}    add_argument    --window-size=1920,1080
-    # Profil unique temporaire
     ${rand}=    Evaluate    random.randint(1000, 9999)    random
     Call Method    ${options}    add_argument    --user-data-dir=/tmp/robot-${rand}
-    # Création du WebDriver Chrome
     Create WebDriver    Chrome    options=${options}
     Go To    ${url}
     Maximize Browser Window
     Set Selenium Timeout    ${timeout}
-
 
 
 Fermer Navigateur
