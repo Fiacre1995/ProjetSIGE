@@ -3,6 +3,7 @@ Library    String
 Library    SeleniumLibrary
 Library    JSONLibrary
 Library    DateTime
+Library    Collections
 
 *** Variables ***
 
@@ -10,18 +11,18 @@ Library    DateTime
 Ouvrir L'application
     [Arguments]    ${url}    ${browser}=chrome    ${timeout}=10
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    # Headless mode compatible Robot Framework 7.3.2 et Chrome récent
     Call Method    ${options}    add_argument    --headless=new
     Call Method    ${options}    add_argument    --no-sandbox
     Call Method    ${options}    add_argument    --disable-dev-shm-usage
+    # Crée un user-data-dir unique pour éviter le conflit CI
     ${rand}=    Evaluate    random.randint(1000,9999)    random
     Call Method    ${options}    add_argument    --user-data-dir=/tmp/robot-${rand}
-    Create WebDriver    ${browser}    options=${options}
-    Go To    ${url}
+    # Crée le driver avec les options
+    Create WebDriver    ${browser}    chrome_options=${options}
+    Maximize Browser Window
     Set Selenium Timeout    ${timeout}
-
-
-
-
+    Go To    ${url}
 
 Fermer Navigateur
     Run Keyword And Ignore Error    Close Browser
