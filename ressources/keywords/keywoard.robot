@@ -4,25 +4,19 @@ Library    SeleniumLibrary
 Library    JSONLibrary
 Library    DateTime
 Library    Collections
+Library    OperatingSystem
 
 *** Variables ***
 
 *** Keywords ***
-Ouvrir L'application
-    Ouvrir L'application
-    [Arguments]    ${url}    ${browser}=chrome    ${timeout}=10
+Ouvrir L_application
+    [Arguments]    ${url}    ${browser}    ${timeout}
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    # Headless mode moderne
+    # Headless Chrome avec user-data-dir unique
     Call Method    ${options}    add_argument    --headless=new
-    Call Method    ${options}    add_argument    --no-sandbox
-    Call Method    ${options}    add_argument    --disable-dev-shm-usage
-    # Utiliser un user-data-dir unique pour éviter les conflits
-    ${rand}=    Evaluate    random.randint(1000,9999)    random
-    Call Method    ${options}    add_argument    --user-data-dir=/tmp/robot-${rand}
-    # Créer le driver
-    Create WebDriver    ${browser}    chrome_options=${options}
-    Maximize Browser Window
-    Set Selenium Timeout    ${timeout}
+    ${user_data_dir}=    Set Variable    /tmp/robot-${RANDOM}
+    Call Method    ${options}    add_argument    --user-data-dir=${user_data_dir}
+    Create WebDriver    ${browser}    options=${options}    implicit_wait=${timeout}
     Go To    ${url}
 
 Fermer Navigateur
