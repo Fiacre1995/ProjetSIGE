@@ -19,7 +19,7 @@ Fermer Navigateur
 charger fichier json
     [Arguments]    ${fichier}
     ${data}=    Load Json From File    ${fichier}
-    [Return]    ${data}
+    RETURN      ${data}
 
 Vérifier L'URL
     [Arguments]    ${expected}
