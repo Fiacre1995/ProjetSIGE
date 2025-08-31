@@ -7,13 +7,6 @@ Library    DateTime
 *** Variables ***
 
 *** Keywords ***
-*** Keywords ***
-*** Keywords ***
-*** Keywords ***
-*** Keywords ***
-*** Keywords ***
-*** Keywords ***
-*** Keywords ***
 Ouvrir L'application
     [Arguments]    ${url}    ${browser}=chrome    ${timeout}=10
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
@@ -25,6 +18,7 @@ Ouvrir L'application
     Create WebDriver    ${browser}    options=${options}
     Go To    ${url}
     Set Selenium Timeout    ${timeout}
+
 
 
 
