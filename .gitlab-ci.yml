@@ -2,28 +2,20 @@ stages:
   - test
 
 variables:
-  ROBOT_OUTPUT_DIR: "resultats/preprod"
+  ROBOT_OPTIONS: "--outputdir reports --report report.html --log log.html --console verbose"
 
-robot-tests:
-  image: python:3.11
+robot_tests:
+  image: python:3.12
   stage: test
   before_script:
-    - apt-get update && apt-get install -y wget unzip xvfb libnss3 fonts-liberation libxss1 libappindicator3-1 libatk-bridge2.0-0 libgtk-3-0
-    - wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
-    - sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-    - apt-get update && apt-get install -y google-chrome-stable
-    # Installer chromedriver automatiquement
-    - pip install chromedriver_autoinstaller
-    - python -c "import chromedriver_autoinstaller; chromedriver_autoinstaller.install()"
     - pip install --upgrade pip
-    - pip install robotframework==7.3.2 robotframework-seleniumlibrary selenium
-    - mkdir -p $ROBOT_OUTPUT_DIR
+    - pip install -r requirements.txt
+    - apt-get update && apt-get install -y xvfb unzip wget
+    - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    - apt install -y ./google-chrome-stable_current_amd64.deb
   script:
-    # Lancer les tests avec Xvfb pour l'affichage headless
-    - xvfb-run robot --variable ENV:preprod --outputdir $ROBOT_OUTPUT_DIR tests/
+    - xvfb-run robot $ROBOT_OPTIONS tests/
   artifacts:
     paths:
-      - $ROBOT_OUTPUT_DIR/output.xml
-      - $ROBOT_OUTPUT_DIR/log.html
-      - $ROBOT_OUTPUT_DIR/report.html
+      - reports/
     expire_in: 1 week
