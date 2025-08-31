@@ -9,16 +9,17 @@ Library    Collections
 
 *** Keywords ***
 Ouvrir L'application
+    Ouvrir L'application
     [Arguments]    ${url}    ${browser}=chrome    ${timeout}=10
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    # Headless mode compatible Robot Framework 7.3.2 et Chrome récent
+    # Headless mode moderne
     Call Method    ${options}    add_argument    --headless=new
     Call Method    ${options}    add_argument    --no-sandbox
     Call Method    ${options}    add_argument    --disable-dev-shm-usage
-    # Crée un user-data-dir unique pour éviter le conflit CI
+    # Utiliser un user-data-dir unique pour éviter les conflits
     ${rand}=    Evaluate    random.randint(1000,9999)    random
     Call Method    ${options}    add_argument    --user-data-dir=/tmp/robot-${rand}
-    # Crée le driver avec les options
+    # Créer le driver
     Create WebDriver    ${browser}    chrome_options=${options}
     Maximize Browser Window
     Set Selenium Timeout    ${timeout}
