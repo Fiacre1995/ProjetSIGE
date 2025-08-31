@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4   # mise à jour conseillée aussi
+      uses: actions/checkout@v4
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -24,10 +24,22 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Install Chrome and Chromedriver
+    - name: Install Chrome
       run: |
         sudo apt-get update
-        sudo apt-get install -y chromium-browser chromium-chromedriver
+        sudo apt-get install -y wget unzip
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+        google-chrome --version
+
+    - name: Install ChromeDriver
+      run: |
+        CHROME_VERSION=$(google-chrome --version | sed 's/Google Chrome //g' | cut -d '.' -f 1)
+        DRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
+        wget "https://chromedriver.storage.googleapis.com/${DRIVER_VERSION}/chromedriver_linux64.zip"
+        unzip chromedriver_linux64.zip
+        sudo mv chromedriver /usr/local/bin/
+        chromedriver --version
 
     - name: Run Robot Framework tests
       run: |
@@ -38,4 +50,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: robot-results
-        path: results/
+        path: resultats/preprod
