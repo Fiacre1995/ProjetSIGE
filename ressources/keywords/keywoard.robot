@@ -7,6 +7,7 @@ Library    DateTime
 *** Variables ***
 
 *** Keywords ***
+*** Keywords ***
 Ouvrir L'application
     [Arguments]    ${url}    ${browser}    ${timeout}
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
@@ -15,10 +16,12 @@ Ouvrir L'application
     Run Keyword If    '${browser}' == 'chrome'    Call Method    ${options}    add_argument    --disable-dev-shm-usage
     Run Keyword If    '${browser}' == 'chrome'    Call Method    ${options}    add_argument    --disable-gpu
     Run Keyword If    '${browser}' == 'chrome'    Call Method    ${options}    add_argument    --window-size=1920,1080
+    Run Keyword If    '${browser}' == 'chrome'    Call Method    ${options}    add_argument    --user-data-dir=/tmp/robot-${RANDOM}
     Run Keyword If    '${browser}' == 'chrome'    Create WebDriver    Chrome    options=${options}
     Run Keyword If    '${browser}' != 'chrome'    Open Browser    ${url}    ${browser}
     Maximize Browser Window
     Set Selenium Timeout    ${timeout}
+
 
 Fermer Navigateur
     Run Keyword And Ignore Error    Close Browser
