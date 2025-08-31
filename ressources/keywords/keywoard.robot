@@ -12,6 +12,7 @@ Library    DateTime
 *** Keywords ***
 *** Keywords ***
 *** Keywords ***
+*** Keywords ***
 Ouvrir L'application
     [Arguments]    ${url}    ${browser}    ${timeout}
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
@@ -19,11 +20,12 @@ Ouvrir L'application
     Call Method    ${options}    add_argument    --no-sandbox
     Call Method    ${options}    add_argument    --disable-dev-shm-usage
     Call Method    ${options}    add_argument    --disable-gpu
-    ${rand}=    Evaluate    random.randint(1000, 9999)    random
+    ${rand}=    Evaluate    random.randint(1000,9999)    random
     Call Method    ${options}    add_argument    --user-data-dir=/tmp/robot-${rand}
     Create WebDriver    ${browser}    options=${options}
     Go To    ${url}
     Set Selenium Timeout    ${timeout}
+
 
 
 Fermer Navigateur
