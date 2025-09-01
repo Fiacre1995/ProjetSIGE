@@ -9,15 +9,11 @@ Library    OperatingSystem
 *** Variables ***
 
 *** Keywords ***
-Ouvrir L_application
+Ouvrir L'application
     [Arguments]    ${url}    ${browser}    ${timeout}
-    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    # Headless Chrome avec user-data-dir unique
-    Call Method    ${options}    add_argument    --headless=new
-    ${user_data_dir}=    Set Variable    /tmp/robot-${RANDOM}
-    Call Method    ${options}    add_argument    --user-data-dir=${user_data_dir}
-    Create WebDriver    ${browser}    options=${options}    implicit_wait=${timeout}
-    Go To    ${url}
+    Open Browser    ${url}    ${browser}
+    Maximize Browser Window
+    Set Selenium Timeout    ${timeout}
 
 Fermer Navigateur
     Run Keyword And Ignore Error    Close Browser
