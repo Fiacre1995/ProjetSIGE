@@ -4,7 +4,7 @@ Documentation     Suite de tests pour valider le cas passant et les cas non pass
 Resource    ${CURDIR}/../pages/loginPage.robot
 Resource   ${CURDIR}/../ressources/variables/${ENV}.robot
 
-Test Setup      Ouvrir L'application    ${BASE_URL}    ${BROWSER}    ${TIMEOUT}
+Test Setup      Ouvrir Navigateur Chrome Headless    ${BASE_URL}    ${BROWSER}
 Test Teardown       Fermer Navigateur
 
 *** Variables ***

@@ -7,13 +7,26 @@ Library    Collections
 Library    OperatingSystem
 
 *** Variables ***
+${SELENIUM_SPEED}          0.5s
+${SELENIUM_TIMEOUT}        10s
 
 *** Keywords ***
-Ouvrir L_application
+Ouvrir L'application
     [Arguments]    ${url}    ${browser}    ${timeout}
     Open Browser    ${url}    ${browser}
     Maximize Browser Window
     Set Selenium Timeout    ${timeout}
+
+Ouvrir Navigateur Chrome Headless
+    [Documentation]    Ouvre Chrome en mode headless avec les options optimisées pour CI
+    [Arguments]    ${url}   ${browser}
+
+    # Version ultra-simple
+    Open Browser    ${url}    ${browser}
+    ...    options=add_argument('--headless'); add_argument('--no-sandbox'); add_argument('--disable-dev-shm-usage'); add_argument('--disable-gpu'); add_argument('--window-size=1920,1080'); add_argument('--disable-extensions'); add_argument('--disable-plugins'); add_argument('--remote-debugging-port=9222')
+
+    Set Selenium Speed    ${SELENIUM_SPEED}
+    Set Selenium Timeout    ${SELENIUM_TIMEOUT}
 
 Fermer Navigateur
     Run Keyword And Ignore Error    Close Browser

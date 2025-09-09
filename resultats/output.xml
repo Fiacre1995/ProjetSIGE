@@ -1,0 +1,1652 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.5 on win32)" generated="2025-09-09T02:23:20.411230" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\afiac\PycharmProjects\ProjetSIGE\tests">
+<suite id="s1-s1" name="Connexion" source="C:\Users\afiac\PycharmProjects\ProjetSIGE\tests\connexion.robot">
+<test id="s1-s1-t1" name="Connexion valider" line="14">
+<kw name="Ouvrir Navigateur Chrome Headless" owner="keywoard" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:23:20.691812" level="INFO">Opening browser 'Chrome' to base url 'https://openemis.preprod-sige.education.gouv.ci/'.</msg>
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>options=add_argument('--headless'); add_argument('--no-sandbox'); add_argument('--disable-dev-shm-usage'); add_argument('--disable-gpu'); add_argument('--window-size=1920,1080'); add_argument('--disable-extensions'); add_argument('--disable-plugins'); add_argument('--remote-debugging-port=9222')</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-09T02:23:20.691600" elapsed="3.737596"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>${SELENIUM_SPEED}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2025-09-09T02:23:24.429384" elapsed="0.000251"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${SELENIUM_TIMEOUT}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2025-09-09T02:23:24.429726" elapsed="0.501588"/>
+</kw>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Ouvre Chrome en mode headless avec les options optimisées pour CI</doc>
+<status status="PASS" start="2025-09-09T02:23:20.690908" elapsed="4.240657"/>
+</kw>
+<kw name="Verifier Url de la page login" owner="loginPage">
+<kw name="Vérifier L'URL" owner="keywoard">
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:23:25.445169" level="INFO">${url} = https://openemis.preprod-sige.education.gouv.ci/</msg>
+<var>${url}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2025-09-09T02:23:24.932428" elapsed="0.512821"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${url}</arg>
+<arg>${expected}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-09-09T02:23:25.445501" elapsed="0.000311"/>
+</kw>
+<arg>${Url_login}</arg>
+<status status="PASS" start="2025-09-09T02:23:24.932231" elapsed="0.513696"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:23:24.931994" elapsed="0.514010"/>
+</kw>
+<kw name="Charger données valident" owner="loginPage">
+<kw name="charger fichier json" owner="keywoard">
+<kw name="Load Json From File" owner="JSONLibrary">
+<msg time="2025-09-09T02:23:25.453869" level="INFO">${data} = {'utilisateur_valide': {'username': 'admin', 'password': 'tano82'}, 'mot_de_passe_invalide': {'username': 'admin', 'password': 'invalidPassword'}, 'nom_utilisateur_invalide': {'username': 'invalidUser...</msg>
+<var>${data}</var>
+<arg>${fichier}</arg>
+<doc>Load JSON from file.</doc>
+<status status="PASS" start="2025-09-09T02:23:25.447361" elapsed="0.006566"/>
+</kw>
+<return>
+<value>${data}</value>
+<status status="PASS" start="2025-09-09T02:23:25.454033" elapsed="0.000082"/>
+</return>
+<msg time="2025-09-09T02:23:25.454354" level="INFO">${data} = {'utilisateur_valide': {'username': 'admin', 'password': 'tano82'}, 'mot_de_passe_invalide': {'username': 'admin', 'password': 'invalidPassword'}, 'nom_utilisateur_invalide': {'username': 'invalidUser...</msg>
+<var>${data}</var>
+<arg>${fichierJson}</arg>
+<status status="PASS" start="2025-09-09T02:23:25.447067" elapsed="0.007323"/>
+</kw>
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-09-09T02:23:25.469586" level="INFO">${nomUtilisateur} = ['admin']</msg>
+<var>${nomUtilisateur}</var>
+<arg>${data}</arg>
+<arg>$.utilisateur_valide.username</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-09-09T02:23:25.454553" elapsed="0.015066"/>
+</kw>
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-09-09T02:23:25.477687" level="INFO">${motDePasse} = ['tano82']</msg>
+<var>${motDePasse}</var>
+<arg>${data}</arg>
+<arg>$.utilisateur_valide.password</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-09-09T02:23:25.469734" elapsed="0.007980"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-09T02:23:25.478147" level="INFO">${nomUtilisateur} = admin</msg>
+<var>${nomUtilisateur}</var>
+<arg>${nomUtilisateur[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-09T02:23:25.477815" elapsed="0.000349"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-09T02:23:25.478496" level="INFO">${motDePasse} = tano82</msg>
+<var>${motDePasse}</var>
+<arg>${motDePasse[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-09T02:23:25.478235" elapsed="0.000276"/>
+</kw>
+<return>
+<value>${nomUtilisateur}</value>
+<value>${motDePasse}</value>
+<status status="PASS" start="2025-09-09T02:23:25.478546" elapsed="0.000034"/>
+</return>
+<msg time="2025-09-09T02:23:25.478677" level="INFO">${username} = admin</msg>
+<msg time="2025-09-09T02:23:25.478698" level="INFO">${password} = tano82</msg>
+<var>${username}</var>
+<var>${password}</var>
+<arg>${Utilisateurs}</arg>
+<status status="PASS" start="2025-09-09T02:23:25.446650" elapsed="0.032060"/>
+</kw>
+<kw name="Connexion Utilisateur" owner="loginPage">
+<kw name="Champ NomUtilisateur" owner="loginPage">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:23:25.480264" level="INFO">Typing text 'admin' into text field 'name=username'.</msg>
+<arg>${champ_nomUtilisateur}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:23:25.479846" elapsed="1.582641"/>
+</kw>
+<arg>${username}</arg>
+<status status="PASS" start="2025-09-09T02:23:25.479611" elapsed="1.582991"/>
+</kw>
+<kw name="Champ MotDePasse" owner="loginPage">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:23:27.063118" level="INFO">Typing text 'tano82' into text field 'name=password'.</msg>
+<arg>${champ_motDePasse}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:23:27.062966" elapsed="1.580922"/>
+</kw>
+<arg>${password}</arg>
+<status status="PASS" start="2025-09-09T02:23:27.062737" elapsed="1.581339"/>
+</kw>
+<kw name="Bouton Connexion" owner="loginPage">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:23:28.644901" level="INFO">Clicking button 'name=submit'.</msg>
+<arg>${bouton_Login}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:23:28.644648" elapsed="8.244457"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:23:28.644301" elapsed="8.244933"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${timeout}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2025-09-09T02:23:36.889374" elapsed="0.501804"/>
+</kw>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<arg>${TIMEOUT}</arg>
+<status status="PASS" start="2025-09-09T02:23:25.479218" elapsed="11.912114"/>
+</kw>
+<kw name="Fermer Navigateur" owner="keywoard" type="TEARDOWN">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-09-09T02:23:37.392723" elapsed="2.955975"/>
+</kw>
+<arg>Close Browser</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-09-09T02:23:37.392550" elapsed="2.956228"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:23:37.392116" elapsed="2.956886"/>
+</kw>
+<tag>demo_valide</tag>
+<status status="PASS" start="2025-09-09T02:23:20.689669" elapsed="19.659633"/>
+</test>
+<test id="s1-s1-t2" name="Nom Utilisateur Invalide" line="20">
+<kw name="Ouvrir Navigateur Chrome Headless" owner="keywoard" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:23:40.351120" level="INFO">Opening browser 'Chrome' to base url 'https://openemis.preprod-sige.education.gouv.ci/'.</msg>
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>options=add_argument('--headless'); add_argument('--no-sandbox'); add_argument('--disable-dev-shm-usage'); add_argument('--disable-gpu'); add_argument('--window-size=1920,1080'); add_argument('--disable-extensions'); add_argument('--disable-plugins'); add_argument('--remote-debugging-port=9222')</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-09T02:23:40.350976" elapsed="4.010059"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>${SELENIUM_SPEED}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2025-09-09T02:23:44.361423" elapsed="0.000458"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${SELENIUM_TIMEOUT}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2025-09-09T02:23:44.362004" elapsed="0.501717"/>
+</kw>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Ouvre Chrome en mode headless avec les options optimisées pour CI</doc>
+<status status="PASS" start="2025-09-09T02:23:40.350760" elapsed="4.513065"/>
+</kw>
+<kw name="Verifier Url de la page login" owner="loginPage">
+<kw name="Vérifier L'URL" owner="keywoard">
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:23:45.371659" level="INFO">${url} = https://openemis.preprod-sige.education.gouv.ci/</msg>
+<var>${url}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2025-09-09T02:23:44.864626" elapsed="0.507081"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${url}</arg>
+<arg>${expected}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-09-09T02:23:45.371863" elapsed="0.000185"/>
+</kw>
+<arg>${Url_login}</arg>
+<status status="PASS" start="2025-09-09T02:23:44.864449" elapsed="0.507654"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:23:44.864226" elapsed="0.507913"/>
+</kw>
+<kw name="Charger mot_de_passe_ivalide" owner="loginPage">
+<kw name="charger fichier json" owner="keywoard">
+<kw name="Load Json From File" owner="JSONLibrary">
+<msg time="2025-09-09T02:23:45.373282" level="INFO">${data} = {'utilisateur_valide': {'username': 'admin', 'password': 'tano82'}, 'mot_de_passe_invalide': {'username': 'admin', 'password': 'invalidPassword'}, 'nom_utilisateur_invalide': {'username': 'invalidUser...</msg>
+<var>${data}</var>
+<arg>${fichier}</arg>
+<doc>Load JSON from file.</doc>
+<status status="PASS" start="2025-09-09T02:23:45.372883" elapsed="0.000429"/>
+</kw>
+<return>
+<value>${data}</value>
+<status status="PASS" start="2025-09-09T02:23:45.373364" elapsed="0.000041"/>
+</return>
+<msg time="2025-09-09T02:23:45.373500" level="INFO">${data} = {'utilisateur_valide': {'username': 'admin', 'password': 'tano82'}, 'mot_de_passe_invalide': {'username': 'admin', 'password': 'invalidPassword'}, 'nom_utilisateur_invalide': {'username': 'invalidUser...</msg>
+<var>${data}</var>
+<arg>${fichierJson}</arg>
+<status status="PASS" start="2025-09-09T02:23:45.372685" elapsed="0.000840"/>
+</kw>
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-09-09T02:23:45.386480" level="INFO">${nomUtilisateur} = ['admin']</msg>
+<var>${nomUtilisateur}</var>
+<arg>${data}</arg>
+<arg>$.mot_de_passe_invalide.username</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-09-09T02:23:45.373626" elapsed="0.012896"/>
+</kw>
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-09-09T02:23:45.400281" level="INFO">${motDePasse} = ['invalidPassword']</msg>
+<var>${motDePasse}</var>
+<arg>${data}</arg>
+<arg>$.mot_de_passe_invalide.password</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-09-09T02:23:45.386672" elapsed="0.013688"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-09T02:23:45.401037" level="INFO">${nomUtilisateur} = admin</msg>
+<var>${nomUtilisateur}</var>
+<arg>${nomUtilisateur[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-09T02:23:45.400571" elapsed="0.000496"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-09T02:23:45.401543" level="INFO">${motDePasse} = invalidPassword</msg>
+<var>${motDePasse}</var>
+<arg>${motDePasse[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-09T02:23:45.401181" elapsed="0.000385"/>
+</kw>
+<return>
+<value>${nomUtilisateur}</value>
+<value>${motDePasse}</value>
+<status status="PASS" start="2025-09-09T02:23:45.401612" elapsed="0.000036"/>
+</return>
+<msg time="2025-09-09T02:23:45.401781" level="INFO">${username} = admin</msg>
+<msg time="2025-09-09T02:23:45.401814" level="INFO">${password} = invalidPassword</msg>
+<var>${username}</var>
+<var>${password}</var>
+<arg>${Utilisateurs}</arg>
+<status status="PASS" start="2025-09-09T02:23:45.372445" elapsed="0.029388"/>
+</kw>
+<kw name="Connexion Utilisateur" owner="loginPage">
+<kw name="Champ NomUtilisateur" owner="loginPage">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:23:45.402816" level="INFO">Typing text 'admin' into text field 'name=username'.</msg>
+<arg>${champ_nomUtilisateur}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:23:45.402649" elapsed="1.571046"/>
+</kw>
+<arg>${username}</arg>
+<status status="PASS" start="2025-09-09T02:23:45.402463" elapsed="1.571338"/>
+</kw>
+<kw name="Champ MotDePasse" owner="loginPage">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:23:46.974311" level="INFO">Typing text 'invalidPassword' into text field 'name=password'.</msg>
+<arg>${champ_motDePasse}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:23:46.974162" elapsed="1.574293"/>
+</kw>
+<arg>${password}</arg>
+<status status="PASS" start="2025-09-09T02:23:46.973935" elapsed="1.574688"/>
+</kw>
+<kw name="Bouton Connexion" owner="loginPage">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:23:48.549297" level="INFO">Clicking button 'name=submit'.</msg>
+<arg>${bouton_Login}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:23:48.549136" elapsed="4.997105"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:23:48.548897" elapsed="4.997445"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${timeout}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2025-09-09T02:23:53.546451" elapsed="0.501868"/>
+</kw>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<arg>${TIMEOUT}</arg>
+<status status="PASS" start="2025-09-09T02:23:45.402187" elapsed="8.646315"/>
+</kw>
+<kw name="Fermer Navigateur" owner="keywoard" type="TEARDOWN">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-09-09T02:23:54.049968" elapsed="3.718378"/>
+</kw>
+<arg>Close Browser</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-09-09T02:23:54.049719" elapsed="3.718761"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:23:54.049239" elapsed="3.719331"/>
+</kw>
+<tag>username_invalide</tag>
+<status status="PASS" start="2025-09-09T02:23:40.350328" elapsed="17.419055"/>
+</test>
+<test id="s1-s1-t3" name="Mot de passe Invalide" line="26">
+<kw name="Ouvrir Navigateur Chrome Headless" owner="keywoard" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:23:57.772844" level="INFO">Opening browser 'Chrome' to base url 'https://openemis.preprod-sige.education.gouv.ci/'.</msg>
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>options=add_argument('--headless'); add_argument('--no-sandbox'); add_argument('--disable-dev-shm-usage'); add_argument('--disable-gpu'); add_argument('--window-size=1920,1080'); add_argument('--disable-extensions'); add_argument('--disable-plugins'); add_argument('--remote-debugging-port=9222')</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-09T02:23:57.772620" elapsed="4.032066"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>${SELENIUM_SPEED}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2025-09-09T02:24:01.804975" elapsed="0.000351"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${SELENIUM_TIMEOUT}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2025-09-09T02:24:01.805481" elapsed="0.502587"/>
+</kw>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Ouvre Chrome en mode headless avec les options optimisées pour CI</doc>
+<status status="PASS" start="2025-09-09T02:23:57.772204" elapsed="4.536054"/>
+</kw>
+<kw name="Verifier Url de la page login" owner="loginPage">
+<kw name="Vérifier L'URL" owner="keywoard">
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:24:02.817384" level="INFO">${url} = https://openemis.preprod-sige.education.gouv.ci/</msg>
+<var>${url}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2025-09-09T02:24:02.309721" elapsed="0.507758"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${url}</arg>
+<arg>${expected}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-09-09T02:24:02.817776" elapsed="0.000371"/>
+</kw>
+<arg>${Url_login}</arg>
+<status status="PASS" start="2025-09-09T02:24:02.309351" elapsed="0.508913"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:24:02.308923" elapsed="0.509426"/>
+</kw>
+<kw name="Charger nom_utilisateur_invalide" owner="loginPage">
+<kw name="charger fichier json" owner="keywoard">
+<kw name="Load Json From File" owner="JSONLibrary">
+<msg time="2025-09-09T02:24:02.821449" level="INFO">${data} = {'utilisateur_valide': {'username': 'admin', 'password': 'tano82'}, 'mot_de_passe_invalide': {'username': 'admin', 'password': 'invalidPassword'}, 'nom_utilisateur_invalide': {'username': 'invalidUser...</msg>
+<var>${data}</var>
+<arg>${fichier}</arg>
+<doc>Load JSON from file.</doc>
+<status status="PASS" start="2025-09-09T02:24:02.820511" elapsed="0.001011"/>
+</kw>
+<return>
+<value>${data}</value>
+<status status="PASS" start="2025-09-09T02:24:02.821655" elapsed="0.000087"/>
+</return>
+<msg time="2025-09-09T02:24:02.822004" level="INFO">${data} = {'utilisateur_valide': {'username': 'admin', 'password': 'tano82'}, 'mot_de_passe_invalide': {'username': 'admin', 'password': 'invalidPassword'}, 'nom_utilisateur_invalide': {'username': 'invalidUser...</msg>
+<var>${data}</var>
+<arg>${fichierJson}</arg>
+<status status="PASS" start="2025-09-09T02:24:02.819902" elapsed="0.002159"/>
+</kw>
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-09-09T02:24:02.838678" level="INFO">${nomUtilisateur} = ['invalidUsername']</msg>
+<var>${nomUtilisateur}</var>
+<arg>${data}</arg>
+<arg>$.nom_utilisateur_invalide.username</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-09-09T02:24:02.822269" elapsed="0.016445"/>
+</kw>
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-09-09T02:24:02.849670" level="INFO">${motDePasse} = ['admin02@@']</msg>
+<var>${motDePasse}</var>
+<arg>${data}</arg>
+<arg>$.nom_utilisateur_invalide.password</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-09-09T02:24:02.838843" elapsed="0.010972"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-09T02:24:02.850842" level="INFO">${nomUtilisateur} = invalidUsername</msg>
+<var>${nomUtilisateur}</var>
+<arg>${nomUtilisateur[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-09T02:24:02.850083" elapsed="0.000806"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-09T02:24:02.851916" level="INFO">${motDePasse} = admin02@@</msg>
+<var>${motDePasse}</var>
+<arg>${motDePasse[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-09T02:24:02.851173" elapsed="0.000795"/>
+</kw>
+<return>
+<value>${nomUtilisateur}</value>
+<value>${motDePasse}</value>
+<status status="PASS" start="2025-09-09T02:24:02.852067" elapsed="0.000084"/>
+</return>
+<msg time="2025-09-09T02:24:02.852633" level="INFO">${username} = invalidUsername</msg>
+<msg time="2025-09-09T02:24:02.852777" level="INFO">${password} = admin02@@</msg>
+<var>${username}</var>
+<var>${password}</var>
+<arg>${Utilisateurs}</arg>
+<status status="PASS" start="2025-09-09T02:24:02.819263" elapsed="0.033660"/>
+</kw>
+<kw name="Connexion Utilisateur" owner="loginPage">
+<kw name="Champ NomUtilisateur" owner="loginPage">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:24:02.854942" level="INFO">Typing text 'invalidUsername' into text field 'name=username'.</msg>
+<arg>${champ_nomUtilisateur}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:24:02.854582" elapsed="1.574399"/>
+</kw>
+<arg>${username}</arg>
+<status status="PASS" start="2025-09-09T02:24:02.854173" elapsed="1.575108"/>
+</kw>
+<kw name="Champ MotDePasse" owner="loginPage">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:24:04.430869" level="INFO">Typing text 'admin02@@' into text field 'name=password'.</msg>
+<arg>${champ_motDePasse}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:24:04.430388" elapsed="1.581840"/>
+</kw>
+<arg>${password}</arg>
+<status status="PASS" start="2025-09-09T02:24:04.429704" elapsed="1.582694"/>
+</kw>
+<kw name="Bouton Connexion" owner="loginPage">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:24:06.013285" level="INFO">Clicking button 'name=submit'.</msg>
+<arg>${bouton_Login}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:24:06.013022" elapsed="5.044028"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:24:06.012653" elapsed="5.044579"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${timeout}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2025-09-09T02:24:11.057454" elapsed="0.501837"/>
+</kw>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<arg>${TIMEOUT}</arg>
+<status status="PASS" start="2025-09-09T02:24:02.853597" elapsed="8.705927"/>
+</kw>
+<kw name="Fermer Navigateur" owner="keywoard" type="TEARDOWN">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-09-09T02:24:11.561603" elapsed="2.569587"/>
+</kw>
+<arg>Close Browser</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-09-09T02:24:11.561302" elapsed="2.570070"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:24:11.560656" elapsed="2.570828"/>
+</kw>
+<tag>password_invalide</tag>
+<status status="PASS" start="2025-09-09T02:23:57.771291" elapsed="16.360784"/>
+</test>
+<test id="s1-s1-t4" name="Nom utilisateur et Mot de passe Invalident" line="32">
+<kw name="Ouvrir Navigateur Chrome Headless" owner="keywoard" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:24:14.133936" level="INFO">Opening browser 'Chrome' to base url 'https://openemis.preprod-sige.education.gouv.ci/'.</msg>
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>options=add_argument('--headless'); add_argument('--no-sandbox'); add_argument('--disable-dev-shm-usage'); add_argument('--disable-gpu'); add_argument('--window-size=1920,1080'); add_argument('--disable-extensions'); add_argument('--disable-plugins'); add_argument('--remote-debugging-port=9222')</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-09T02:24:14.133650" elapsed="4.036476"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>${SELENIUM_SPEED}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2025-09-09T02:24:18.170427" elapsed="0.000354"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${SELENIUM_TIMEOUT}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2025-09-09T02:24:18.170928" elapsed="0.502672"/>
+</kw>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Ouvre Chrome en mode headless avec les options optimisées pour CI</doc>
+<status status="PASS" start="2025-09-09T02:24:14.133203" elapsed="4.540527"/>
+</kw>
+<kw name="Verifier Url de la page login" owner="loginPage">
+<kw name="Vérifier L'URL" owner="keywoard">
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:24:19.186479" level="INFO">${url} = https://openemis.preprod-sige.education.gouv.ci/</msg>
+<var>${url}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2025-09-09T02:24:18.675288" elapsed="0.511273"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${url}</arg>
+<arg>${expected}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-09-09T02:24:19.186926" elapsed="0.000394"/>
+</kw>
+<arg>${Url_login}</arg>
+<status status="PASS" start="2025-09-09T02:24:18.674831" elapsed="0.512608"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:24:18.674378" elapsed="0.513136"/>
+</kw>
+<kw name="Charger nom_et_mot_de_passe_utilisateur_invalide" owner="loginPage">
+<kw name="charger fichier json" owner="keywoard">
+<kw name="Load Json From File" owner="JSONLibrary">
+<msg time="2025-09-09T02:24:19.189416" level="INFO">${data} = {'utilisateur_valide': {'username': 'admin', 'password': 'tano82'}, 'mot_de_passe_invalide': {'username': 'admin', 'password': 'invalidPassword'}, 'nom_utilisateur_invalide': {'username': 'invalidUser...</msg>
+<var>${data}</var>
+<arg>${fichier}</arg>
+<doc>Load JSON from file.</doc>
+<status status="PASS" start="2025-09-09T02:24:19.188860" elapsed="0.000602"/>
+</kw>
+<return>
+<value>${data}</value>
+<status status="PASS" start="2025-09-09T02:24:19.189540" elapsed="0.000049"/>
+</return>
+<msg time="2025-09-09T02:24:19.189724" level="INFO">${data} = {'utilisateur_valide': {'username': 'admin', 'password': 'tano82'}, 'mot_de_passe_invalide': {'username': 'admin', 'password': 'invalidPassword'}, 'nom_utilisateur_invalide': {'username': 'invalidUser...</msg>
+<var>${data}</var>
+<arg>${fichierJson}</arg>
+<status status="PASS" start="2025-09-09T02:24:19.188526" elapsed="0.001228"/>
+</kw>
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-09-09T02:24:19.199778" level="INFO">${nomUtilisateur} = ['invalidUsername']</msg>
+<var>${nomUtilisateur}</var>
+<arg>${data}</arg>
+<arg>$.nom_utilisateur_et_mot_de_passe_invalide.username</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-09-09T02:24:19.189880" elapsed="0.009930"/>
+</kw>
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-09-09T02:24:19.220140" level="INFO">${motDePasse} = ['invalidPassword']</msg>
+<var>${motDePasse}</var>
+<arg>${data}</arg>
+<arg>$.nom_utilisateur_et_mot_de_passe_invalide.password</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-09-09T02:24:19.199925" elapsed="0.020266"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-09T02:24:19.220919" level="INFO">${nomUtilisateur} = invalidUsername</msg>
+<var>${nomUtilisateur}</var>
+<arg>${nomUtilisateur[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-09T02:24:19.220372" elapsed="0.000580"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-09T02:24:19.221529" level="INFO">${motDePasse} = invalidPassword</msg>
+<var>${motDePasse}</var>
+<arg>${motDePasse[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-09T02:24:19.221072" elapsed="0.000489"/>
+</kw>
+<return>
+<value>${nomUtilisateur}</value>
+<value>${motDePasse}</value>
+<status status="PASS" start="2025-09-09T02:24:19.221630" elapsed="0.000128"/>
+</return>
+<msg time="2025-09-09T02:24:19.221998" level="INFO">${username} = invalidUsername</msg>
+<msg time="2025-09-09T02:24:19.222050" level="INFO">${password} = invalidPassword</msg>
+<var>${username}</var>
+<var>${password}</var>
+<arg>${Utilisateurs}</arg>
+<status status="PASS" start="2025-09-09T02:24:19.188031" elapsed="0.034046"/>
+</kw>
+<kw name="Connexion Utilisateur" owner="loginPage">
+<kw name="Champ NomUtilisateur" owner="loginPage">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:24:19.223357" level="INFO">Typing text 'invalidUsername' into text field 'name=username'.</msg>
+<arg>${champ_nomUtilisateur}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:24:19.223120" elapsed="1.603938"/>
+</kw>
+<arg>${username}</arg>
+<status status="PASS" start="2025-09-09T02:24:19.222813" elapsed="1.604553"/>
+</kw>
+<kw name="Champ MotDePasse" owner="loginPage">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:24:20.828911" level="INFO">Typing text 'invalidPassword' into text field 'name=password'.</msg>
+<arg>${champ_motDePasse}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:24:20.828422" elapsed="1.594054"/>
+</kw>
+<arg>${password}</arg>
+<status status="PASS" start="2025-09-09T02:24:20.827783" elapsed="1.594889"/>
+</kw>
+<kw name="Bouton Connexion" owner="loginPage">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:24:22.423660" level="INFO">Clicking button 'name=submit'.</msg>
+<arg>${bouton_Login}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:24:22.423357" elapsed="4.923837"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:24:22.422931" elapsed="4.924664"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${timeout}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2025-09-09T02:24:27.347957" elapsed="0.503444"/>
+</kw>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<arg>${TIMEOUT}</arg>
+<status status="PASS" start="2025-09-09T02:24:19.222405" elapsed="8.629091"/>
+</kw>
+<kw name="Fermer Navigateur" owner="keywoard" type="TEARDOWN">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-09-09T02:24:27.852427" elapsed="3.079002"/>
+</kw>
+<arg>Close Browser</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-09-09T02:24:27.852319" elapsed="3.079322"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:24:27.852105" elapsed="3.079687"/>
+</kw>
+<tag>password_invalide</tag>
+<status status="PASS" start="2025-09-09T02:24:14.132685" elapsed="16.800104"/>
+</test>
+<doc>Suite de tests pour valider le cas passant et les cas non passant de la connexion</doc>
+<status status="PASS" start="2025-09-09T02:23:20.429053" elapsed="70.506317"/>
+</suite>
+<suite id="s1-s2" name="Deconnexion" source="C:\Users\afiac\PycharmProjects\ProjetSIGE\tests\deconnexion.robot">
+<test id="s1-s2-t1" name="Deconnexion normale" line="14">
+<kw name="Ouvrir Navigateur Chrome Headless" owner="keywoard" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:24:30.947730" level="INFO">Opening browser 'Chrome' to base url 'https://openemis.preprod-sige.education.gouv.ci/'.</msg>
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>options=add_argument('--headless'); add_argument('--no-sandbox'); add_argument('--disable-dev-shm-usage'); add_argument('--disable-gpu'); add_argument('--window-size=1920,1080'); add_argument('--disable-extensions'); add_argument('--disable-plugins'); add_argument('--remote-debugging-port=9222')</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-09T02:24:30.947479" elapsed="3.691318"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>${SELENIUM_SPEED}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2025-09-09T02:24:34.639138" elapsed="0.000393"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${SELENIUM_TIMEOUT}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2025-09-09T02:24:34.639712" elapsed="0.502862"/>
+</kw>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Ouvre Chrome en mode headless avec les options optimisées pour CI</doc>
+<status status="PASS" start="2025-09-09T02:24:30.947032" elapsed="4.195791"/>
+</kw>
+<kw name="Verifier Url de la page login" owner="loginPage">
+<kw name="Vérifier L'URL" owner="keywoard">
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:24:35.653248" level="INFO">${url} = https://openemis.preprod-sige.education.gouv.ci/</msg>
+<var>${url}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2025-09-09T02:24:35.144582" elapsed="0.508768"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${url}</arg>
+<arg>${expected}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-09-09T02:24:35.653624" elapsed="0.000344"/>
+</kw>
+<arg>${Url_login}</arg>
+<status status="PASS" start="2025-09-09T02:24:35.144160" elapsed="0.509920"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:24:35.143587" elapsed="0.510571"/>
+</kw>
+<kw name="charger fichier json" owner="keywoard">
+<kw name="Load Json From File" owner="JSONLibrary">
+<msg time="2025-09-09T02:24:35.656248" level="INFO">${data} = {'utilisateur_valide': {'username': 'admin', 'password': 'tano82'}, 'mot_de_passe_invalide': {'username': 'admin', 'password': 'invalidPassword'}, 'nom_utilisateur_invalide': {'username': 'invalidUser...</msg>
+<var>${data}</var>
+<arg>${fichier}</arg>
+<doc>Load JSON from file.</doc>
+<status status="PASS" start="2025-09-09T02:24:35.655482" elapsed="0.000822"/>
+</kw>
+<return>
+<value>${data}</value>
+<status status="PASS" start="2025-09-09T02:24:35.656408" elapsed="0.000069"/>
+</return>
+<msg time="2025-09-09T02:24:35.656665" level="INFO">${data} = {'utilisateur_valide': {'username': 'admin', 'password': 'tano82'}, 'mot_de_passe_invalide': {'username': 'admin', 'password': 'invalidPassword'}, 'nom_utilisateur_invalide': {'username': 'invalidUser...</msg>
+<var>${data}</var>
+<arg>${Utilisateurs}</arg>
+<status status="PASS" start="2025-09-09T02:24:35.654896" elapsed="0.001809"/>
+</kw>
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-09-09T02:24:35.677801" level="INFO">${nomUtilisateurValide} = ['admin']</msg>
+<var>${nomUtilisateurValide}</var>
+<arg>${data}</arg>
+<arg>$.utilisateur_valide.username</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-09-09T02:24:35.657274" elapsed="0.020593"/>
+</kw>
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-09-09T02:24:35.692333" level="INFO">${motDePasseValide} = ['tano82']</msg>
+<var>${motDePasseValide}</var>
+<arg>${data}</arg>
+<arg>$.utilisateur_valide.password</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-09-09T02:24:35.678247" elapsed="0.014140"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-09T02:24:35.693379" level="INFO">${nomUtilisateurValide} = admin</msg>
+<var>${nomUtilisateurValide}</var>
+<arg>${nomUtilisateurValide[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-09T02:24:35.692907" elapsed="0.000495"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-09T02:24:35.694261" level="INFO">${motDePasseValide} = tano82</msg>
+<var>${motDePasseValide}</var>
+<arg>${motDePasseValide[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-09T02:24:35.693837" elapsed="0.000452"/>
+</kw>
+<kw name="Connexion Utilisateur" owner="loginPage">
+<kw name="Champ NomUtilisateur" owner="loginPage">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:24:35.695806" level="INFO">Typing text 'admin' into text field 'name=username'.</msg>
+<arg>${champ_nomUtilisateur}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:24:35.695530" elapsed="1.579482"/>
+</kw>
+<arg>${username}</arg>
+<status status="PASS" start="2025-09-09T02:24:35.695228" elapsed="1.579890"/>
+</kw>
+<kw name="Champ MotDePasse" owner="loginPage">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:24:37.275600" level="INFO">Typing text 'tano82' into text field 'name=password'.</msg>
+<arg>${champ_motDePasse}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:24:37.275462" elapsed="1.584341"/>
+</kw>
+<arg>${password}</arg>
+<status status="PASS" start="2025-09-09T02:24:37.275257" elapsed="1.584891"/>
+</kw>
+<kw name="Bouton Connexion" owner="loginPage">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:24:38.861370" level="INFO">Clicking button 'name=submit'.</msg>
+<arg>${bouton_Login}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:24:38.861016" elapsed="7.050534"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:24:38.860507" elapsed="7.051137"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${timeout}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2025-09-09T02:24:45.911754" elapsed="0.501275"/>
+</kw>
+<arg>${nomUtilisateurValide}</arg>
+<arg>${motDePasseValide}</arg>
+<arg>${TIMEOUT}</arg>
+<status status="PASS" start="2025-09-09T02:24:35.694773" elapsed="10.718484"/>
+</kw>
+<kw name="Vérifier que l'Url login contient Dashboard" owner="dashboard">
+<kw name="Vérifier que l'URL contient un mot" owner="keywoard">
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:24:46.920234" level="INFO">${url} = https://openemis.preprod-sige.education.gouv.ci/Dashboard</msg>
+<var>${url}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2025-09-09T02:24:46.415142" elapsed="0.505153"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${url}</arg>
+<arg>${expected}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-09-09T02:24:46.920495" elapsed="0.000220"/>
+</kw>
+<arg>${Mot_url_dashboard}</arg>
+<status status="PASS" start="2025-09-09T02:24:46.414738" elapsed="0.506056"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:24:46.414311" elapsed="0.506692"/>
+</kw>
+<kw name="Cliquer sur Bouton Menu" owner="dashboard">
+<kw name="Cliquer sur un élément" owner="keywoard">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${bouton_menu}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-09T02:24:46.922822" elapsed="1.042018"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:24:47.965189" level="INFO">Clicking element 'xpath=/html/body/header/nav/div[2]/div/div[5]/button'.</msg>
+<arg>${bouton_menu}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:24:47.965011" elapsed="1.060254"/>
+</kw>
+<arg>${bouton_menu}</arg>
+<status status="PASS" start="2025-09-09T02:24:46.922499" elapsed="2.102971"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:24:46.922143" elapsed="2.103419"/>
+</kw>
+<kw name="Cliquer sur Bouton Deconnexion" owner="dashboard">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${bouton_deconnexion}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-09T02:24:49.026908" elapsed="1.025252"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:24:50.052642" level="INFO">Clicking element 'xpath=//a[span[text()=" Déconnexion"]]'.</msg>
+<arg>${bouton_deconnexion}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:24:50.052367" elapsed="2.388805"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:24:49.026270" elapsed="3.415057"/>
+</kw>
+<kw name="Fermer Navigateur" owner="keywoard" type="TEARDOWN">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-09-09T02:24:52.442177" elapsed="2.603362"/>
+</kw>
+<arg>Close Browser</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-09-09T02:24:52.442076" elapsed="2.603616"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:24:52.441852" elapsed="2.603923"/>
+</kw>
+<tag>demo_valide</tag>
+<status status="PASS" start="2025-09-09T02:24:30.946378" elapsed="24.099919"/>
+</test>
+<test id="s1-s2-t2" name="Deconnexion SSO" line="27">
+<kw name="Ouvrir Navigateur Chrome Headless" owner="keywoard" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:24:55.048504" level="INFO">Opening browser 'Chrome' to base url 'https://openemis.preprod-sige.education.gouv.ci/'.</msg>
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>options=add_argument('--headless'); add_argument('--no-sandbox'); add_argument('--disable-dev-shm-usage'); add_argument('--disable-gpu'); add_argument('--window-size=1920,1080'); add_argument('--disable-extensions'); add_argument('--disable-plugins'); add_argument('--remote-debugging-port=9222')</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-09T02:24:55.048188" elapsed="3.970503"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>${SELENIUM_SPEED}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2025-09-09T02:24:59.018998" elapsed="0.000347"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${SELENIUM_TIMEOUT}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2025-09-09T02:24:59.019512" elapsed="0.502365"/>
+</kw>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Ouvre Chrome en mode headless avec les options optimisées pour CI</doc>
+<status status="PASS" start="2025-09-09T02:24:55.047742" elapsed="4.474266"/>
+</kw>
+<kw name="Verifier Url de la page login" owner="loginPage">
+<kw name="Vérifier L'URL" owner="keywoard">
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:25:00.027816" level="INFO">${url} = https://openemis.preprod-sige.education.gouv.ci/</msg>
+<var>${url}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2025-09-09T02:24:59.522968" elapsed="0.504928"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${url}</arg>
+<arg>${expected}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-09-09T02:25:00.028172" elapsed="0.000362"/>
+</kw>
+<arg>${Url_login}</arg>
+<status status="PASS" start="2025-09-09T02:24:59.522732" elapsed="0.505924"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:24:59.522425" elapsed="0.506316"/>
+</kw>
+<kw name="charger fichier json" owner="keywoard">
+<kw name="Load Json From File" owner="JSONLibrary">
+<msg time="2025-09-09T02:25:00.031029" level="INFO">${data} = {'utilisateur_valide': {'username': 'admin', 'password': 'tano82'}, 'mot_de_passe_invalide': {'username': 'admin', 'password': 'invalidPassword'}, 'nom_utilisateur_invalide': {'username': 'invalidUser...</msg>
+<var>${data}</var>
+<arg>${fichier}</arg>
+<doc>Load JSON from file.</doc>
+<status status="PASS" start="2025-09-09T02:25:00.030125" elapsed="0.000985"/>
+</kw>
+<return>
+<value>${data}</value>
+<status status="PASS" start="2025-09-09T02:25:00.031250" elapsed="0.000090"/>
+</return>
+<msg time="2025-09-09T02:25:00.031598" level="INFO">${data} = {'utilisateur_valide': {'username': 'admin', 'password': 'tano82'}, 'mot_de_passe_invalide': {'username': 'admin', 'password': 'invalidPassword'}, 'nom_utilisateur_invalide': {'username': 'invalidUser...</msg>
+<var>${data}</var>
+<arg>${Utilisateurs}</arg>
+<status status="PASS" start="2025-09-09T02:25:00.029713" elapsed="0.001939"/>
+</kw>
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-09-09T02:25:00.044657" level="INFO">${nomUtilisateurValide} = ['admin']</msg>
+<var>${nomUtilisateurValide}</var>
+<arg>${data}</arg>
+<arg>$.utilisateur_valide.username</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-09-09T02:25:00.032253" elapsed="0.012438"/>
+</kw>
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-09-09T02:25:00.061148" level="INFO">${motDePasseValide} = ['tano82']</msg>
+<var>${motDePasseValide}</var>
+<arg>${data}</arg>
+<arg>$.utilisateur_valide.password</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-09-09T02:25:00.045378" elapsed="0.015813"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-09T02:25:00.062015" level="INFO">${nomUtilisateurValide} = admin</msg>
+<var>${nomUtilisateurValide}</var>
+<arg>${nomUtilisateurValide[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-09T02:25:00.061459" elapsed="0.000585"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-09T02:25:00.064052" level="INFO">${motDePasseValide} = tano82</msg>
+<var>${motDePasseValide}</var>
+<arg>${motDePasseValide[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-09T02:25:00.062653" elapsed="0.001482"/>
+</kw>
+<kw name="Connexion Utilisateur" owner="loginPage">
+<kw name="Champ NomUtilisateur" owner="loginPage">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:25:00.066273" level="INFO">Typing text 'admin' into text field 'name=username'.</msg>
+<arg>${champ_nomUtilisateur}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:25:00.065898" elapsed="1.580306"/>
+</kw>
+<arg>${username}</arg>
+<status status="PASS" start="2025-09-09T02:25:00.065439" elapsed="1.580995"/>
+</kw>
+<kw name="Champ MotDePasse" owner="loginPage">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:25:01.647355" level="INFO">Typing text 'tano82' into text field 'name=password'.</msg>
+<arg>${champ_motDePasse}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:25:01.647082" elapsed="1.572457"/>
+</kw>
+<arg>${password}</arg>
+<status status="PASS" start="2025-09-09T02:25:01.646675" elapsed="1.573114"/>
+</kw>
+<kw name="Bouton Connexion" owner="loginPage">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:25:03.221021" level="INFO">Clicking button 'name=submit'.</msg>
+<arg>${bouton_Login}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:25:03.220632" elapsed="6.919883"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:25:03.220107" elapsed="6.920530"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${timeout}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2025-09-09T02:25:10.140763" elapsed="0.502007"/>
+</kw>
+<arg>${nomUtilisateurValide}</arg>
+<arg>${motDePasseValide}</arg>
+<arg>${TIMEOUT}</arg>
+<status status="PASS" start="2025-09-09T02:25:00.064671" elapsed="10.578378"/>
+</kw>
+<kw name="Vérifier que l'Url login contient Dashboard" owner="dashboard">
+<kw name="Vérifier que l'URL contient un mot" owner="keywoard">
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:25:11.154962" level="INFO">${url} = https://openemis.preprod-sige.education.gouv.ci/Dashboard</msg>
+<var>${url}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2025-09-09T02:25:10.645364" elapsed="0.509636"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${url}</arg>
+<arg>${expected}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-09-09T02:25:11.155134" elapsed="0.000128"/>
+</kw>
+<arg>${Mot_url_dashboard}</arg>
+<status status="PASS" start="2025-09-09T02:25:10.644784" elapsed="0.510524"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:25:10.644096" elapsed="0.511244"/>
+</kw>
+<kw name="Cliquer sur Bouton Menu" owner="dashboard">
+<kw name="Cliquer sur un élément" owner="keywoard">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${bouton_menu}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-09T02:25:11.156507" elapsed="1.020579"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:25:12.177579" level="INFO">Clicking element 'xpath=/html/body/header/nav/div[2]/div/div[5]/button'.</msg>
+<arg>${bouton_menu}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:25:12.177329" elapsed="1.057044"/>
+</kw>
+<arg>${bouton_menu}</arg>
+<status status="PASS" start="2025-09-09T02:25:11.156338" elapsed="2.078215"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:25:11.156155" elapsed="2.078484"/>
+</kw>
+<kw name="Cliquer sur Bouton Deconnexion SSO" owner="dashboard">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${bouton_deconnexion_sso}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-09T02:25:13.236301" elapsed="1.026210"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:25:14.263945" level="INFO">Clicking element 'xpath=//a[span[text()=" Déconnexion"]]'.</msg>
+<arg>${bouton_deconnexion}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:25:14.263055" elapsed="2.475301"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:25:13.235588" elapsed="3.503022"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-09-09T02:25:19.740676" level="INFO">Slept 3 seconds.</msg>
+<arg>3S</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-09-09T02:25:16.739516" elapsed="3.001371"/>
+</kw>
+<kw name="Fermer Navigateur" owner="keywoard" type="TEARDOWN">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-09-09T02:25:19.742698" elapsed="3.605537"/>
+</kw>
+<arg>Close Browser</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-09-09T02:25:19.742440" elapsed="3.606004"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:25:19.741929" elapsed="3.606652"/>
+</kw>
+<tag>deconnexion_sso</tag>
+<status status="PASS" start="2025-09-09T02:24:55.047124" elapsed="28.301804"/>
+</test>
+<status status="PASS" start="2025-09-09T02:24:30.938137" elapsed="52.412208"/>
+</suite>
+<suite id="s1-s3" name="Profil Utilisateur" source="C:\Users\afiac\PycharmProjects\ProjetSIGE\tests\profil_utilisateur">
+<suite id="s1-s3-s1" name="Ajouté Pièces Jointes" source="C:\Users\afiac\PycharmProjects\ProjetSIGE\tests\profil_utilisateur\ajouté_pièces_jointes.robot">
+<test id="s1-s3-s1-t1" name="Nationalité valider" line="18">
+<kw name="Ouvrir Navigateur Chrome Headless" owner="keywoard" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:25:23.365925" level="INFO">Opening browser 'Chrome' to base url 'https://openemis.preprod-sige.education.gouv.ci/'.</msg>
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>options=add_argument('--headless'); add_argument('--no-sandbox'); add_argument('--disable-dev-shm-usage'); add_argument('--disable-gpu'); add_argument('--window-size=1920,1080'); add_argument('--disable-extensions'); add_argument('--disable-plugins'); add_argument('--remote-debugging-port=9222')</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-09T02:25:23.365772" elapsed="3.995166"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>${SELENIUM_SPEED}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2025-09-09T02:25:27.361309" elapsed="0.000387"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${SELENIUM_TIMEOUT}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2025-09-09T02:25:27.361876" elapsed="0.502286"/>
+</kw>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Ouvre Chrome en mode headless avec les options optimisées pour CI</doc>
+<status status="PASS" start="2025-09-09T02:25:23.365518" elapsed="4.498793"/>
+</kw>
+<kw name="Verifier Url de la page login" owner="loginPage">
+<kw name="Vérifier L'URL" owner="keywoard">
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:25:28.372627" level="INFO">${url} = https://openemis.preprod-sige.education.gouv.ci/</msg>
+<var>${url}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2025-09-09T02:25:27.865886" elapsed="0.506817"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${url}</arg>
+<arg>${expected}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-09-09T02:25:28.372947" elapsed="0.000291"/>
+</kw>
+<arg>${Url_login}</arg>
+<status status="PASS" start="2025-09-09T02:25:27.865630" elapsed="0.507704"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:25:27.865029" elapsed="0.508372"/>
+</kw>
+<kw name="charger fichier json" owner="keywoard">
+<kw name="Load Json From File" owner="JSONLibrary">
+<msg time="2025-09-09T02:25:28.374719" level="INFO">${data} = {'utilisateur_valide': {'username': 'admin', 'password': 'tano82'}, 'mot_de_passe_invalide': {'username': 'admin', 'password': 'invalidPassword'}, 'nom_utilisateur_invalide': {'username': 'invalidUser...</msg>
+<var>${data}</var>
+<arg>${fichier}</arg>
+<doc>Load JSON from file.</doc>
+<status status="PASS" start="2025-09-09T02:25:28.374267" elapsed="0.000483"/>
+</kw>
+<return>
+<value>${data}</value>
+<status status="PASS" start="2025-09-09T02:25:28.374807" elapsed="0.000043"/>
+</return>
+<msg time="2025-09-09T02:25:28.375018" level="INFO">${data} = {'utilisateur_valide': {'username': 'admin', 'password': 'tano82'}, 'mot_de_passe_invalide': {'username': 'admin', 'password': 'invalidPassword'}, 'nom_utilisateur_invalide': {'username': 'invalidUser...</msg>
+<var>${data}</var>
+<arg>${Utilisateurs}</arg>
+<status status="PASS" start="2025-09-09T02:25:28.374010" elapsed="0.001033"/>
+</kw>
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-09-09T02:25:28.388600" level="INFO">${nomUtilisateurValide} = ['admin']</msg>
+<var>${nomUtilisateurValide}</var>
+<arg>${data}</arg>
+<arg>$.utilisateur_valide.username</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-09-09T02:25:28.375453" elapsed="0.013182"/>
+</kw>
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-09-09T02:25:28.401314" level="INFO">${motDePasseValide} = ['tano82']</msg>
+<var>${motDePasseValide}</var>
+<arg>${data}</arg>
+<arg>$.utilisateur_valide.password</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-09-09T02:25:28.389102" elapsed="0.012275"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-09T02:25:28.402293" level="INFO">${nomUtilisateurValide} = admin</msg>
+<var>${nomUtilisateurValide}</var>
+<arg>${nomUtilisateurValide[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-09T02:25:28.401701" elapsed="0.000621"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-09T02:25:28.404278" level="INFO">${motDePasseValide} = tano82</msg>
+<var>${motDePasseValide}</var>
+<arg>${motDePasseValide[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-09T02:25:28.403118" elapsed="0.001214"/>
+</kw>
+<kw name="Connexion Utilisateur" owner="loginPage">
+<kw name="Champ NomUtilisateur" owner="loginPage">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:25:28.405702" level="INFO">Typing text 'admin' into text field 'name=username'.</msg>
+<arg>${champ_nomUtilisateur}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:25:28.405527" elapsed="1.567399"/>
+</kw>
+<arg>${username}</arg>
+<status status="PASS" start="2025-09-09T02:25:28.405279" elapsed="1.567768"/>
+</kw>
+<kw name="Champ MotDePasse" owner="loginPage">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:25:29.973931" level="INFO">Typing text 'tano82' into text field 'name=password'.</msg>
+<arg>${champ_motDePasse}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:25:29.973498" elapsed="1.575734"/>
+</kw>
+<arg>${password}</arg>
+<status status="PASS" start="2025-09-09T02:25:29.973210" elapsed="1.576458"/>
+</kw>
+<kw name="Bouton Connexion" owner="loginPage">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:25:31.550831" level="INFO">Clicking button 'name=submit'.</msg>
+<arg>${bouton_Login}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:25:31.550497" elapsed="6.928488"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:25:31.550014" elapsed="6.929112"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${timeout}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2025-09-09T02:25:38.479421" elapsed="0.501524"/>
+</kw>
+<arg>${nomUtilisateurValide}</arg>
+<arg>${motDePasseValide}</arg>
+<arg>${TIMEOUT}</arg>
+<status status="PASS" start="2025-09-09T02:25:28.404767" elapsed="10.576287"/>
+</kw>
+<kw name="Cliquer sur lien profil utilisateur" owner="dashboard">
+<kw name="Cliquer sur un élément" owner="keywoard">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${bouton_menu}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-09T02:25:38.981782" elapsed="1.027013"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:25:40.009193" level="INFO">Clicking element 'xpath=//*[@id="nav-menu-1"]/li[1]'.</msg>
+<arg>${bouton_menu}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:25:40.008991" elapsed="1.687855"/>
+</kw>
+<arg>${lien_profil_utilisateur}</arg>
+<status status="PASS" start="2025-09-09T02:25:38.981605" elapsed="2.715577"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:25:38.981391" elapsed="2.715937"/>
+</kw>
+<kw name="Cliquer sur lien pièces jointes" owner="profil_utilisateur">
+<kw name="Cliquer sur un élément" owner="keywoard">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${bouton_menu}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-09T02:25:41.699780" elapsed="1.023779"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:25:42.724184" level="INFO">Clicking element 'xpath=//*[@id="tabs"]/div[2]/span[9]'.</msg>
+<arg>${bouton_menu}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:25:42.723855" elapsed="1.597546"/>
+</kw>
+<arg>${lien_pièce_jointe}</arg>
+<status status="PASS" start="2025-09-09T02:25:41.699212" elapsed="2.622404"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:25:41.698493" elapsed="2.623213"/>
+</kw>
+<kw name="Cliquer sur bouton ajouter pièces jointe" owner="profil_utilisateur">
+<kw name="Cliquer sur un élément" owner="keywoard">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${bouton_menu}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-09T02:25:44.323669" elapsed="1.036538"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:25:45.360742" level="INFO">Clicking element 'xpath=//*[@id="rightPane"]/div[1]/div[1]/div/a'.</msg>
+<arg>${bouton_menu}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:25:45.360467" elapsed="2.064018"/>
+</kw>
+<arg>${bouton_ajouter_pièce_jointe}</arg>
+<status status="PASS" start="2025-09-09T02:25:44.322803" elapsed="3.102001"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:25:44.322325" elapsed="3.102620"/>
+</kw>
+<kw name="Créer pièce jointes" owner="profil_utilisateur">
+<kw name="Champ de chargement de fichier" owner="keywoard">
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:25:47.428354" level="INFO">Sending C:\Users\afiac\PycharmProjects\ProjetSIGE\data\utilisateurs.json to browser.</msg>
+<arg>${selector}</arg>
+<arg>${fichierSelectionner}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:25:47.427860" elapsed="1.043883"/>
+</kw>
+<arg>${champ_file_pièce_jointe}</arg>
+<arg>${champ_file}</arg>
+<status status="PASS" start="2025-09-09T02:25:47.427164" elapsed="1.044801"/>
+</kw>
+<kw name="Champ de saisir" owner="keywoard">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${selector}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-09T02:25:48.473086" elapsed="1.023813"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:25:49.497406" level="INFO">Typing text 'Pièce jointe 1' into text field 'id=attachments-name'.</msg>
+<arg>${selector}</arg>
+<arg>${motSaisir}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:25:49.497136" elapsed="1.584611"/>
+</kw>
+<arg>${champ_nom}</arg>
+<arg>${champ_nom_data}</arg>
+<status status="PASS" start="2025-09-09T02:25:48.472306" elapsed="2.609782"/>
+</kw>
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2025-09-09T02:25:51.083517" level="INFO">${DATE} = 09-09-2025</msg>
+<var>${DATE}</var>
+<arg>result_format=%d-%m-%Y</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2025-09-09T02:25:51.082598" elapsed="0.000995"/>
+</kw>
+<kw name="Champ de saisir" owner="keywoard">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${selector}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-09T02:25:51.085009" elapsed="1.025296"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:25:52.111338" level="INFO">Typing text '09-09-2025' into text field 'id=attachments-date-on-file'.</msg>
+<arg>${selector}</arg>
+<arg>${motSaisir}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:25:52.110768" elapsed="1.586700"/>
+</kw>
+<arg>${champ_date}</arg>
+<arg>${DATE}</arg>
+<status status="PASS" start="2025-09-09T02:25:51.083974" elapsed="2.613704"/>
+</kw>
+<kw name="Cliquer sur un élément" owner="keywoard">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${bouton_menu}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-09T02:25:53.698487" elapsed="1.017639"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:25:54.716896" level="INFO">Clicking element 'xpath=//*[@id="rightPane"]/div[1]/div[1]/div/a'.</msg>
+<arg>${bouton_menu}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:25:54.716497" elapsed="2.076887"/>
+</kw>
+<arg>${bouton_ajouter_pièce_jointe}</arg>
+<status status="PASS" start="2025-09-09T02:25:53.697993" elapsed="3.095494"/>
+</kw>
+<arg>${fichier1}</arg>
+<arg>${NOM}</arg>
+<status status="PASS" start="2025-09-09T02:25:47.426230" elapsed="9.367299"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-09-09T02:26:01.794693" level="INFO">Slept 5 seconds.</msg>
+<arg>5S</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-09-09T02:25:56.794103" elapsed="5.000685"/>
+</kw>
+<kw name="Fermer Navigateur" owner="keywoard" type="TEARDOWN">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-09-09T02:26:01.795915" elapsed="2.613226"/>
+</kw>
+<arg>Close Browser</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-09-09T02:26:01.795815" elapsed="2.613418"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:26:01.795502" elapsed="2.613790"/>
+</kw>
+<tag>ajouté_pièces_jointes</tag>
+<status status="PASS" start="2025-09-09T02:25:23.364816" elapsed="41.044611"/>
+</test>
+<doc>Rajouté la nationalité de l'utilisateur</doc>
+<status status="PASS" start="2025-09-09T02:25:23.355252" elapsed="41.054952"/>
+</suite>
+<suite id="s1-s3-s2" name="Nationalité" source="C:\Users\afiac\PycharmProjects\ProjetSIGE\tests\profil_utilisateur\nationalité.robot">
+<test id="s1-s3-s2-t1" name="Nationalité valider" line="17">
+<kw name="Ouvrir Navigateur Chrome Headless" owner="keywoard" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:26:04.419249" level="INFO">Opening browser 'Chrome' to base url 'https://openemis.preprod-sige.education.gouv.ci/'.</msg>
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>options=add_argument('--headless'); add_argument('--no-sandbox'); add_argument('--disable-dev-shm-usage'); add_argument('--disable-gpu'); add_argument('--window-size=1920,1080'); add_argument('--disable-extensions'); add_argument('--disable-plugins'); add_argument('--remote-debugging-port=9222')</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-09T02:26:04.419080" elapsed="3.676971"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>${SELENIUM_SPEED}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2025-09-09T02:26:08.096341" elapsed="0.000279"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${SELENIUM_TIMEOUT}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2025-09-09T02:26:08.096744" elapsed="0.502311"/>
+</kw>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Ouvre Chrome en mode headless avec les options optimisées pour CI</doc>
+<status status="PASS" start="2025-09-09T02:26:04.418770" elapsed="4.180435"/>
+</kw>
+<kw name="Verifier Url de la page login" owner="loginPage">
+<kw name="Vérifier L'URL" owner="keywoard">
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:26:09.109728" level="INFO">${url} = https://openemis.preprod-sige.education.gouv.ci/</msg>
+<var>${url}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2025-09-09T02:26:08.601164" elapsed="0.508630"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${url}</arg>
+<arg>${expected}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-09-09T02:26:09.110052" elapsed="0.000289"/>
+</kw>
+<arg>${Url_login}</arg>
+<status status="PASS" start="2025-09-09T02:26:08.600786" elapsed="0.509653"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:26:08.600040" elapsed="0.510472"/>
+</kw>
+<kw name="charger fichier json" owner="keywoard">
+<kw name="Load Json From File" owner="JSONLibrary">
+<msg time="2025-09-09T02:26:09.112298" level="INFO">${data} = {'utilisateur_valide': {'username': 'admin', 'password': 'tano82'}, 'mot_de_passe_invalide': {'username': 'admin', 'password': 'invalidPassword'}, 'nom_utilisateur_invalide': {'username': 'invalidUser...</msg>
+<var>${data}</var>
+<arg>${fichier}</arg>
+<doc>Load JSON from file.</doc>
+<status status="PASS" start="2025-09-09T02:26:09.111694" elapsed="0.000630"/>
+</kw>
+<return>
+<value>${data}</value>
+<status status="PASS" start="2025-09-09T02:26:09.112379" elapsed="0.000036"/>
+</return>
+<msg time="2025-09-09T02:26:09.112502" level="INFO">${data} = {'utilisateur_valide': {'username': 'admin', 'password': 'tano82'}, 'mot_de_passe_invalide': {'username': 'admin', 'password': 'invalidPassword'}, 'nom_utilisateur_invalide': {'username': 'invalidUser...</msg>
+<var>${data}</var>
+<arg>${Utilisateurs}</arg>
+<status status="PASS" start="2025-09-09T02:26:09.111328" elapsed="0.001191"/>
+</kw>
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-09-09T02:26:09.122734" level="INFO">${nomUtilisateurValide} = ['admin']</msg>
+<var>${nomUtilisateurValide}</var>
+<arg>${data}</arg>
+<arg>$.utilisateur_valide.username</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-09-09T02:26:09.112832" elapsed="0.009937"/>
+</kw>
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-09-09T02:26:09.131982" level="INFO">${motDePasseValide} = ['tano82']</msg>
+<var>${motDePasseValide}</var>
+<arg>${data}</arg>
+<arg>$.utilisateur_valide.password</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-09-09T02:26:09.123151" elapsed="0.008864"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-09T02:26:09.133038" level="INFO">${nomUtilisateurValide} = admin</msg>
+<var>${nomUtilisateurValide}</var>
+<arg>${nomUtilisateurValide[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-09T02:26:09.132462" elapsed="0.000595"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-09-09T02:26:09.133708" level="INFO">${motDePasseValide} = tano82</msg>
+<var>${motDePasseValide}</var>
+<arg>${motDePasseValide[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-09-09T02:26:09.133335" elapsed="0.000390"/>
+</kw>
+<kw name="Connexion Utilisateur" owner="loginPage">
+<kw name="Champ NomUtilisateur" owner="loginPage">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:26:09.134494" level="INFO">Typing text 'admin' into text field 'name=username'.</msg>
+<arg>${champ_nomUtilisateur}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:26:09.134373" elapsed="1.569541"/>
+</kw>
+<arg>${username}</arg>
+<status status="PASS" start="2025-09-09T02:26:09.134243" elapsed="1.569927"/>
+</kw>
+<kw name="Champ MotDePasse" owner="loginPage">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:26:10.705664" level="INFO">Typing text 'tano82' into text field 'name=password'.</msg>
+<arg>${champ_motDePasse}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:26:10.705162" elapsed="1.587269"/>
+</kw>
+<arg>${password}</arg>
+<status status="PASS" start="2025-09-09T02:26:10.704528" elapsed="1.588041"/>
+</kw>
+<kw name="Bouton Connexion" owner="loginPage">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:26:12.293034" level="INFO">Clicking button 'name=submit'.</msg>
+<arg>${bouton_Login}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:26:12.292896" elapsed="6.827622"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:26:12.292710" elapsed="6.827978"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${timeout}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2025-09-09T02:26:19.120816" elapsed="0.501541"/>
+</kw>
+<arg>${nomUtilisateurValide}</arg>
+<arg>${motDePasseValide}</arg>
+<arg>${TIMEOUT}</arg>
+<status status="PASS" start="2025-09-09T02:26:09.134042" elapsed="10.488413"/>
+</kw>
+<kw name="Cliquer sur lien profil utilisateur" owner="dashboard">
+<kw name="Cliquer sur un élément" owner="keywoard">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${bouton_menu}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-09T02:26:19.623235" elapsed="1.017716"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:26:20.641288" level="INFO">Clicking element 'xpath=//*[@id="nav-menu-1"]/li[1]'.</msg>
+<arg>${bouton_menu}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:26:20.641112" elapsed="1.579402"/>
+</kw>
+<arg>${lien_profil_utilisateur}</arg>
+<status status="PASS" start="2025-09-09T02:26:19.623070" elapsed="2.597656"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:26:19.622875" elapsed="2.597941"/>
+</kw>
+<kw name="Cliquer sur lien nationalité" owner="profil_utilisateur">
+<kw name="Cliquer sur un élément" owner="keywoard">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${bouton_menu}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-09T02:26:22.223120" elapsed="1.025627"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:26:23.250021" level="INFO">Clicking element 'xpath=//*[@id="tabs"]/div[2]/span[6]'.</msg>
+<arg>${bouton_menu}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:26:23.249539" elapsed="1.592495"/>
+</kw>
+<arg>${lien_nationalité}</arg>
+<status status="PASS" start="2025-09-09T02:26:22.222690" elapsed="2.619448"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:26:22.222136" elapsed="2.620039"/>
+</kw>
+<kw name="Cliquer sur bouton ajouter nationalité" owner="profil_utilisateur">
+<kw name="Cliquer sur un élément" owner="keywoard">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${bouton_menu}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-09T02:26:24.842940" elapsed="1.025151"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:26:25.869199" level="INFO">Clicking element 'xpath=//*[@id="rightPane"]/div[1]/div[1]/div/a'.</msg>
+<arg>${bouton_menu}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:26:25.868654" elapsed="1.505169"/>
+</kw>
+<arg>${bouton_ajouter_nationalité}</arg>
+<status status="PASS" start="2025-09-09T02:26:24.842778" elapsed="2.531236"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:26:24.842593" elapsed="2.531508"/>
+</kw>
+<kw name="Créer nationalité" owner="profil_utilisateur">
+<kw name="Champ de liste déroulante" owner="keywoard">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${selector}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-09T02:26:27.375704" elapsed="1.032552"/>
+</kw>
+<kw name="Select From List By Label" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:26:28.409417" level="INFO">Selecting options from selection list 'id=usernationalities-nationality-id' by label Mali.</msg>
+<arg>${selector}</arg>
+<arg>${motSelectionner}</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<status status="PASS" start="2025-09-09T02:26:28.408785" elapsed="5.985239"/>
+</kw>
+<arg>${champ_nationalité}</arg>
+<arg>${champ_1}</arg>
+<status status="PASS" start="2025-09-09T02:26:27.375285" elapsed="7.018949"/>
+</kw>
+<kw name="Champ de liste déroulante" owner="keywoard">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${selector}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-09T02:26:34.395630" elapsed="1.023567"/>
+</kw>
+<kw name="Select From List By Label" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:26:35.419998" level="INFO">Selecting options from selection list 'id=usernationalities-preferred' by label Non.</msg>
+<arg>${selector}</arg>
+<arg>${motSelectionner}</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<status status="PASS" start="2025-09-09T02:26:35.419541" elapsed="4.586031"/>
+</kw>
+<arg>${champ_privilégié}</arg>
+<arg>${champ_2}</arg>
+<status status="PASS" start="2025-09-09T02:26:34.394539" elapsed="5.611249"/>
+</kw>
+<kw name="Cliquer sur un élément" owner="keywoard">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${bouton_menu}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-09T02:26:40.006618" elapsed="1.017149"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:26:41.024960" level="INFO">Clicking element 'xpath=//*[@id="rightPane"]/div[1]/div[1]/div/a'.</msg>
+<arg>${bouton_menu}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:26:41.024330" elapsed="1.734312"/>
+</kw>
+<arg>${bouton_ajouter_nationalité}</arg>
+<status status="PASS" start="2025-09-09T02:26:40.006097" elapsed="2.752798"/>
+</kw>
+<arg>${NATIONALITE}[1]</arg>
+<arg>${PRIVILEGIE}[1]</arg>
+<status status="PASS" start="2025-09-09T02:26:27.374714" elapsed="15.384301"/>
+</kw>
+<kw name="Cliquer sur bouton ajouter nationalité" owner="profil_utilisateur">
+<kw name="Cliquer sur un élément" owner="keywoard">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${bouton_menu}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-09T02:26:42.761123" elapsed="1.023699"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-09-09T02:26:43.785282" level="INFO">Clicking element 'xpath=//*[@id="rightPane"]/div[1]/div[1]/div/a'.</msg>
+<arg>${bouton_menu}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-09T02:26:43.785045" elapsed="1.717916"/>
+</kw>
+<arg>${bouton_ajouter_nationalité}</arg>
+<status status="PASS" start="2025-09-09T02:26:42.760710" elapsed="2.742472"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:26:42.760210" elapsed="2.743214"/>
+</kw>
+<kw name="Fermer Navigateur" owner="keywoard" type="TEARDOWN">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-09-09T02:26:45.505017" elapsed="2.591880"/>
+</kw>
+<arg>Close Browser</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2025-09-09T02:26:45.504766" elapsed="2.592295"/>
+</kw>
+<status status="PASS" start="2025-09-09T02:26:45.504292" elapsed="2.592899"/>
+</kw>
+<tag>nationalité_valider</tag>
+<status status="PASS" start="2025-09-09T02:26:04.418065" elapsed="43.679573"/>
+</test>
+<doc>Rajouté la nationalité de l'utilisateur</doc>
+<status status="PASS" start="2025-09-09T02:26:04.411909" elapsed="43.687590"/>
+</suite>
+<status status="PASS" start="2025-09-09T02:25:23.352394" elapsed="84.749009"/>
+</suite>
+<status status="PASS" start="2025-09-09T02:23:20.412160" elapsed="207.690988"/>
+</suite>
+<statistics>
+<total>
+<stat pass="8" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">ajouté_pièces_jointes</stat>
+<stat pass="1" fail="0" skip="0">deconnexion_sso</stat>
+<stat pass="2" fail="0" skip="0">demo_valide</stat>
+<stat pass="1" fail="0" skip="0">nationalité_valider</stat>
+<stat pass="2" fail="0" skip="0">password_invalide</stat>
+<stat pass="1" fail="0" skip="0">username_invalide</stat>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="8" fail="0" skip="0">Tests</stat>
+<stat name="Connexion" id="s1-s1" pass="4" fail="0" skip="0">Tests.Connexion</stat>
+<stat name="Deconnexion" id="s1-s2" pass="2" fail="0" skip="0">Tests.Deconnexion</stat>
+<stat name="Profil Utilisateur" id="s1-s3" pass="2" fail="0" skip="0">Tests.Profil Utilisateur</stat>
+<stat name="Ajouté Pièces Jointes" id="s1-s3-s1" pass="1" fail="0" skip="0">Tests.Profil Utilisateur.Ajouté Pièces Jointes</stat>
+<stat name="Nationalité" id="s1-s3-s2" pass="1" fail="0" skip="0">Tests.Profil Utilisateur.Nationalité</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

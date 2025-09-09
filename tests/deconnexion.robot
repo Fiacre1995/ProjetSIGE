@@ -4,7 +4,7 @@ Resource    ../pages/loginPage.robot
 Resource    ../pages/dashboard.robot
 Resource   ../ressources/variables/${ENV}.robot
 
-Test Setup      Ouvrir L'application    ${BASE_URL}    ${BROWSER}    ${TIMEOUT}
+Test Setup      Ouvrir Navigateur Chrome Headless    ${BASE_URL}    ${BROWSER}
 Test Teardown       Fermer Navigateur
 
 *** Variables ***

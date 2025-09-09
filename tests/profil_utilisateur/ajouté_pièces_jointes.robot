@@ -7,7 +7,7 @@ Resource    ${CURDIR}/../../pages/dashboard.robot
 Resource   ${CURDIR}/../../ressources/variables/${ENV}.robot
 Resource   ${CURDIR}/../../ressources/variables/nationnalité_variable.robot
 
-Test Setup      Ouvrir L'application    ${BASE_URL}    ${BROWSER}    ${TIMEOUT}
+Test Setup      Ouvrir Navigateur Chrome Headless    ${BASE_URL}    ${BROWSER}
 Test Teardown       Fermer Navigateur
 
 *** Variables ***
